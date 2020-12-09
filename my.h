@@ -19,10 +19,14 @@ int list[9] = { 1,2,3,4,5,6,7,8,9 };//number list
 int solution[9][9] = { 0 };//the answer
 n map[9][9] = { 0,false };
 clock_t start_time, end_time;//time
-int degree=0;
+int degree = 1;
 int key=0;
-int uArea[20][2][2];//uncovered area
+int uArea[50][2];//uncovered area
 int curPo_x = 0, curPo_y = 0;
+
+IMAGE mWindow, sWindow, gWindow, eWindow, background;//frames
+IMAGE b1, g1, r1, b2, g2, r2, b3, g3, r3, b4, g4, r4, b5, g5, r5, b6, g6, r6, b7, g7, r7, b8, g8, r8, b9, g9, r9;//numbers
+
 
 void makeList() {
 	srand((unsigned)time(NULL));
@@ -166,5 +170,68 @@ void generate() {
 			}
 		}
 	}
+}
+
+void makeUArea() {
+	int tmp1, tmp2;
+	bool same = false;
+	for (int i =0 ; i < 50; i++) {
+		reset:
+		tmp1 = rand() % 9;
+		tmp2 = rand() % 9;
+		for (int j = 0; j < i; j++) {
+			if (uArea[j][0] == tmp1 && uArea[j][1] == tmp2) {
+				same = true; break;
+			}
+		}
+		if (same == true) {
+			same = false;
+			goto reset;
+		}
+		else {
+			uArea[i][0] = tmp1;
+			uArea[i][1] = tmp2;
+		}
+	}
+}
+
+void resetMap() {
+	for (int i = 0; i < 9; i++) 
+		for (int j = 0; j < 9; j++) {
+			map[i][j].num = 0;
+			map[i][j].isBlack = false;
+		}
+}
+void makeMap() {
+	if (degree ==1) {
+		int tmpa, tmpb;
+		for (int i = 0; i < 40; i++) {
+			tmpa = uArea[i][0];
+			tmpb = uArea[i][1];
+			map[tmpa][tmpb].num = solution[tmpa][tmpb];
+			map[tmpa][tmpb].isBlack = true;
+		}
+		return;
+	}
+	if (degree == 2)
+	{
+		int tmpa, tmpb;
+		for (int i = 0; i < 30; i++) {
+			tmpa = uArea[i][0];
+			tmpb = uArea[i][1];
+			map[tmpa][tmpb].num = solution[tmpa][tmpb];
+			map[tmpa][tmpb].isBlack = true;
+		}
+	}
+	if (degree == 3) {
+		int tmpa, tmpb;
+		for (int i = 0; i < 25; i++) {
+			tmpa = uArea[i][0];
+			tmpb = uArea[i][1];
+			map[tmpa][tmpb].num = solution[tmpa][tmpb];
+			map[tmpa][tmpb].isBlack = true;
+		}
+	}
+
 }
 
