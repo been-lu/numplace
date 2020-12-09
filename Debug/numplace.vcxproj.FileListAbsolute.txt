@@ -1,0 +1,3 @@
+D:\repository\numplace\Debug\源.cpp
+D:\repository\numplace\Debug\numplace.exe
+D:\repository\numplace\Debug\numplace.pdb
