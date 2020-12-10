@@ -25,7 +25,8 @@ int uArea[50][2];//uncovered area
 int curPo_x = 0, curPo_y = 0;
 
 IMAGE mWindow, sWindow, gWindow, success, fail, eWindow, background;//frames
-IMAGE b1, g1, r1, b2, g2, r2, b3, g3, r3, b4, g4, r4, b5, g5, r5, b6, g6, r6, b7, g7, r7, b8, g8, r8, b9, g9, r9, s;//numbers
+IMAGE b1, g1, r1, b2, g2, r2, b3, g3, r3, b4, g4, r4, b5, g5, r5, b6, g6, r6, b7, g7, r7, b8, g8, r8, b9, g9, r9, s, zero;//numbers
+IMAGE pointer;
 
 
 void makeList() {
@@ -47,11 +48,11 @@ bool check(int a, int b) {
 
 	//line
 	for (int i = 0; i < 9; i++)
-		if (map[a][i].num == map[a][b].num && a != i)
+		if (map[a][i].num == map[a][b].num && b != i)
 			return false;
 	//row
 	for (int i = 0; i < 9; i++)
-		if (map[i][b].num == map[a][b].num && b != i)
+		if (map[i][b].num == map[a][b].num && a != i)
 			return false;
 	
 	//area
@@ -216,7 +217,7 @@ void resetMap() {
 void makeMap() {
 	if (degree ==1) {
 		int tmpa, tmpb;
-		for (int i = 0; i < 40; i++) {
+		for (int i = 0; i < 50; i++) {
 			tmpa = uArea[i][0];
 			tmpb = uArea[i][1];
 			map[tmpa][tmpb].num = solution[tmpa][tmpb];
@@ -227,7 +228,7 @@ void makeMap() {
 	if (degree == 2)
 	{
 		int tmpa, tmpb;
-		for (int i = 0; i < 30; i++) {
+		for (int i = 0; i < 40; i++) {
 			tmpa = uArea[i][0];
 			tmpb = uArea[i][1];
 			map[tmpa][tmpb].num = solution[tmpa][tmpb];
@@ -236,7 +237,7 @@ void makeMap() {
 	}
 	if (degree == 3) {
 		int tmpa, tmpb;
-		for (int i = 0; i < 25; i++) {
+		for (int i = 0; i < 35; i++) {
 			tmpa = uArea[i][0];
 			tmpb = uArea[i][1];
 			map[tmpa][tmpb].num = solution[tmpa][tmpb];

@@ -2,7 +2,7 @@
 
 
 void drawMap();//draw the map
-void keyboard();//the keyboard hit
+bool keyboard();//the keyboard hit
 void mainWindow();//the mainwindow frame
 void selectDegree();
 void gameWindow();//the gamewindow frame
@@ -11,41 +11,44 @@ void endWindow();//the end window frame
 
 void main() {
 	
-
-	loadimage(&background,_T("D:\\repository\\numplace\\pic\\background.png"),800,600);
-	loadimage(&mWindow, _T("D:\\repository\\numplace\\pic\\mwindow.png"), 800, 600);
-	loadimage(&sWindow, _T("D:\\repository\\numplace\\pic\\swindow.png"), 800, 600);
-	loadimage(&success, _T("D:\\repository\\numplace\\pic\\success.png"), 800, 600);
-	loadimage(&fail, _T("D:\\repository\\numplace\\pic\\fail.png"), 800, 600);
-	loadimage(&eWindow, _T("D:\\repository\\numplace\\pic\\ewindow.png"), 800, 600);
-	loadimage(&b1, _T("D:\\repository\\numplace\\pic\\b1.png"), 40, 40);
-	loadimage(&b2, _T("D:\\repository\\numplace\\pic\\b2.png"), 40, 40);
-	loadimage(&b3, _T("D:\\repository\\numplace\\pic\\b3.png"), 40, 40); 
-	loadimage(&b4, _T("D:\\repository\\numplace\\pic\\b4.png"), 40, 40);
-	loadimage(&b5, _T("D:\\repository\\numplace\\pic\\b5.png"), 40, 40); 
-	loadimage(&b6, _T("D:\\repository\\numplace\\pic\\b6.png"), 40, 40);
-	loadimage(&b7, _T("D:\\repository\\numplace\\pic\\b7.png"), 40, 40);
-	loadimage(&b8, _T("D:\\repository\\numplace\\pic\\b8.png"), 40, 40);
-	loadimage(&b9, _T("D:\\repository\\numplace\\pic\\b9.png"), 40, 40);
-	loadimage(&g1, _T("D:\\repository\\numplace\\pic\\g1.png"), 40, 40);
-	loadimage(&g2, _T("D:\\repository\\numplace\\pic\\g2.png"), 40, 40);
-	loadimage(&g3, _T("D:\\repository\\numplace\\pic\\g3.png"), 40, 40);
-	loadimage(&g4, _T("D:\\repository\\numplace\\pic\\g4.png"), 40, 40);
-	loadimage(&g5, _T("D:\\repository\\numplace\\pic\\g5.png"), 40, 40);
-	loadimage(&g6, _T("D:\\repository\\numplace\\pic\\g6.png"), 40, 40);
-	loadimage(&g7, _T("D:\\repository\\numplace\\pic\\g7.png"), 40, 40);
-	loadimage(&g8, _T("D:\\repository\\numplace\\pic\\g8.png"), 40, 40);
-	loadimage(&g9, _T("D:\\repository\\numplace\\pic\\g9.png"), 40, 40);
-	loadimage(&r1, _T("D:\\repository\\numplace\\pic\\r1.png"), 40, 40);
-	loadimage(&r2, _T("D:\\repository\\numplace\\pic\\r2.png"), 40, 40);
-	loadimage(&r3, _T("D:\\repository\\numplace\\pic\\r3.png"), 40, 40);
-	loadimage(&r4, _T("D:\\repository\\numplace\\pic\\r4.png"), 40, 40);
-	loadimage(&r5, _T("D:\\repository\\numplace\\pic\\r5.png"), 40, 40);
-	loadimage(&r6, _T("D:\\repository\\numplace\\pic\\r6.png"), 40, 40);
-	loadimage(&r7, _T("D:\\repository\\numplace\\pic\\r7.png"), 40, 40);
-	loadimage(&r8, _T("D:\\repository\\numplace\\pic\\r8.png"), 40, 40);
-	loadimage(&r9, _T("D:\\repository\\numplace\\pic\\r9.png"), 40, 40);
-	loadimage(&s, _T("D:\\repository\\numplace\\pic\\s.png"), 40, 40);
+	{
+		loadimage(&background, _T("pic\\background.png"), 800, 600);
+		loadimage(&mWindow, _T("pic\\mwindow.png"), 800, 600);
+		loadimage(&sWindow, _T("pic\\swindow.png"), 800, 600);
+		loadimage(&success, _T("pic\\success.png"), 800, 600);
+		loadimage(&fail, _T("pic\\fail.png"), 800, 600);
+		loadimage(&eWindow, _T("pic\\ewindow.png"), 800, 600);
+		loadimage(&b1, _T("pic\\b1.png"), 40, 40);
+		loadimage(&b2, _T("pic\\b2.png"), 40, 40);
+		loadimage(&b3, _T("pic\\b3.png"), 40, 40);
+		loadimage(&b4, _T("pic\\b4.png"), 40, 40);
+		loadimage(&b5, _T("pic\\b5.png"), 40, 40);
+		loadimage(&b6, _T("pic\\b6.png"), 40, 40);
+		loadimage(&b7, _T("pic\\b7.png"), 40, 40);
+		loadimage(&b8, _T("pic\\b8.png"), 40, 40);
+		loadimage(&b9, _T("D:pic\\b9.png"), 40, 40);
+		loadimage(&g1, _T("pic\\g1.png"), 40, 40);
+		loadimage(&g2, _T("pic\\g2.png"), 40, 40);
+		loadimage(&g3, _T("pic\\g3.png"), 40, 40);
+		loadimage(&g4, _T("pic\\g4.png"), 40, 40);
+		loadimage(&g5, _T("pic\\g5.png"), 40, 40);
+		loadimage(&g6, _T("pic\\g6.png"), 40, 40);
+		loadimage(&g7, _T("pic\\g7.png"), 40, 40);
+		loadimage(&g8, _T("pic\\g8.png"), 40, 40);
+		loadimage(&g9, _T("pic\\g9.png"), 40, 40);
+		loadimage(&r1, _T("pic\\r1.png"), 40, 40);
+		loadimage(&r2, _T("pic\\r2.png"), 40, 40);
+		loadimage(&r3, _T("pic\\r3.png"), 40, 40);
+		loadimage(&r4, _T("pic\\r4.png"), 40, 40);
+		loadimage(&r5, _T("pic\\r5.png"), 40, 40);
+		loadimage(&r6, _T("pic\\r6.png"), 40, 40);
+		loadimage(&r7, _T("pic\\r7.png"), 40, 40);
+		loadimage(&r8, _T("pic\\r8.png"), 40, 40);
+		loadimage(&r9, _T("pic\\r9.png"), 40, 40);
+		loadimage(&zero, _T("pic\\0.png"), 40, 40);
+		loadimage(&s, _T("pic\\s.png"), 40, 40);
+		loadimage(&pointer, _T("pic\\pointer.png"), 40, 2);
+	}
 	
 	initgraph(800, 600);
 	mainWindow();
@@ -53,7 +56,7 @@ void main() {
 }
 
 
-void keyboard()
+bool keyboard()
 {
 	if (_kbhit() == 1)
 	{
@@ -73,19 +76,21 @@ void keyboard()
 			if (key == ' ') {
 				end_time = clock_t();
 				endWindow();
+				return false;
 			}
 		}
-		drawMap();
 	}
+	return true;
 }
 
 void endWindow() {
+	cleardevice();
 	if (checkAll())
 		putimage(0, 0, &success);
 	else
 		putimage(0, 0, &fail);
 
-	//time undone
+	int time = (int)(end_time - start_time) / CLOCKS_PER_SEC;
 
 	while (1) 
 		if (_kbhit() == 1)
@@ -116,11 +121,87 @@ void endWindow() {
 
 }
 
-void drawMap() {
+void draw() {
+	cleardevice();
+	putimage(0, 0, &background);
+	for (int i = 0; i < 9; i++) {
+		for (int j = 0; j < 9; j++) {
+			if (map[i][j].isBlack)
+			{
+				if (map[i][j].num == 1)
+					putimage(220 + i * 40, 120 + j * 40, &b1);
+				if (map[i][j].num == 2)
+					putimage(220 + i * 40, 120 + j * 40, &b2);
+				if (map[i][j].num == 3)
+					putimage(220 + i * 40, 120 + j * 40, &b3);
+				if (map[i][j].num == 4)
+					putimage(220 + i * 40, 120 + j * 40, &b4);
+				if (map[i][j].num == 5)
+					putimage(220 + i * 40, 120 + j * 40, &b5);
+				if (map[i][j].num == 6)
+					putimage(220 + i * 40, 120 + j * 40, &b6);
+				if (map[i][j].num == 7)
+					putimage(220 + i * 40, 120 + j * 40, &b7);
+				if (map[i][j].num == 8)
+					putimage(220 + i * 40, 120 + j * 40, &b8);
+				if (map[i][j].num == 9)
+					putimage(220 + i * 40, 120 + j * 40, &b9);
+			}
+			else {
+				if (map[i][j].num == 0)
+					putimage(220 + i * 40, 120 + j * 40, &zero);
+				if (degree != 3) {
+					if (check(i, j)) {
+						if (map[i][j].num == 1)
+							putimage(220 + i * 40, 120 + j * 40, &g1);
+						if (map[i][j].num == 2)
+							putimage(220 + i * 40, 120 + j * 40, &g2);
+						if (map[i][j].num == 3)
+							putimage(220 + i * 40, 120 + j * 40, &g3);
+						if (map[i][j].num == 4)
+							putimage(220 + i * 40, 120 + j * 40, &g4);
+						if (map[i][j].num == 5)
+							putimage(220 + i * 40, 120 + j * 40, &g5);
+						if (map[i][j].num == 6)
+							putimage(220 + i * 40, 120 + j * 40, &g6);
+						if (map[i][j].num == 7)
+							putimage(220 + i * 40, 120 + j * 40, &g7);
+						if (map[i][j].num == 8)
+							putimage(220 + i * 40, 120 + j * 40, &g8);
+						if (map[i][j].num == 9)
+							putimage(220 + i * 40, 120 + j * 40, &g9);
+					}
+					else {
+						if (map[i][j].num == 1)
+							putimage(220 + i * 40, 120 + j * 40, &r1);
+						if (map[i][j].num == 2)
+							putimage(220 + i * 40, 120 + j * 40, &r2);
+						if (map[i][j].num == 3)
+							putimage(220 + i * 40, 120 + j * 40, &r3);
+						if (map[i][j].num == 4)
+							putimage(220 + i * 40, 120 + j * 40, &r4);
+						if (map[i][j].num == 5)
+							putimage(220 + i * 40, 120 + j * 40, &r5);
+						if (map[i][j].num == 6)
+							putimage(220 + i * 40, 120 + j * 40, &r6);
+						if (map[i][j].num == 7)
+							putimage(220 + i * 40, 120 + j * 40, &r7);
+						if (map[i][j].num == 8)
+							putimage(220 + i * 40, 120 + j * 40, &r8);
+						if (map[i][j].num == 9)
+							putimage(220 + i * 40, 120 + j * 40, &r9);
+					}
+				}
+			}
+		}
+	}
+	putimage(220 + curPo_x * 40, 160 + curPo_y * 40, &pointer);
+	Sleep(50);
 
 }
 
 void selectDegree() {
+	cleardevice();
 	putimage(0, 0, &sWindow);
 
 	int choose;
@@ -150,12 +231,14 @@ void selectDegree() {
 	makeList();
 	generate();
 	makeMap();
-	gameWindow();
 	start_time = clock_t();
+	gameWindow();
+	
 
 }
 
 void mainWindow() {
+	cleardevice();
 	putimage(0, 0, &mWindow);
 	int choose;
 	while (1) {
@@ -181,6 +264,12 @@ void mainWindow() {
 }
 
 void gameWindow() {
-
-
+	while (1) {
+		draw();
+		if (keyboard())
+			continue;
+		else
+			break;
+	}
+	
 }
