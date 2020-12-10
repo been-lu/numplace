@@ -24,8 +24,8 @@ int key=0;
 int uArea[50][2];//uncovered area
 int curPo_x = 0, curPo_y = 0;
 
-IMAGE mWindow, sWindow, gWindow, eWindow, background;//frames
-IMAGE b1, g1, r1, b2, g2, r2, b3, g3, r3, b4, g4, r4, b5, g5, r5, b6, g6, r6, b7, g7, r7, b8, g8, r8, b9, g9, r9;//numbers
+IMAGE mWindow, sWindow, gWindow, success, fail, eWindow, background;//frames
+IMAGE b1, g1, r1, b2, g2, r2, b3, g3, r3, b4, g4, r4, b5, g5, r5, b6, g6, r6, b7, g7, r7, b8, g8, r8, b9, g9, r9, s;//numbers
 
 
 void makeList() {
@@ -47,11 +47,11 @@ bool check(int a, int b) {
 
 	//line
 	for (int i = 0; i < 9; i++)
-		if (solution[a][i] == solution[a][b] && a != i)
+		if (map[a][i].num == map[a][b].num && a != i)
 			return false;
 	//row
 	for (int i = 0; i < 9; i++)
-		if (solution[i][b] == solution[a][b] && b != i)
+		if (map[i][b].num == map[a][b].num && b != i)
 			return false;
 	
 	//area
@@ -59,7 +59,7 @@ bool check(int a, int b) {
 	if (a < 3 && b < 3)
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++) {
-				if (solution[i][j] == solution[a][b] &&
+				if (map[i][j].num == map[a][b].num &&
 					!(a == i && b == j))
 					return false;
 			}
@@ -68,7 +68,7 @@ bool check(int a, int b) {
 	if (a >= 3 && a < 6 && b < 3)
 		for (int i = 3; i < 6; i++)
 			for (int j = 0; j < 3; j++)
-				if (solution[i][j] == solution[a][b] &&
+				if (map[i][j].num == map[a][b].num &&
 					!(a == i && b == j))
 					return false;
 
@@ -76,7 +76,7 @@ bool check(int a, int b) {
 	if (a >= 6 && a < 9 && b < 3)
 		for (int i = 6; i < 9; i++)
 			for (int j = 0; j < 3; j++)
-				if (solution[i][j] == solution[a][b] &&
+				if (map[i][j].num == map[a][b].num &&
 					!(a == i && b == j))
 					return false;
 
@@ -84,7 +84,7 @@ bool check(int a, int b) {
 	if (a < 3 && b >= 3 && b < 6)
 		for (int i = 0; i < 3; i++)
 			for (int j = 3; j < 6; j++)
-				if (solution[i][j] == solution[a][b] &&
+				if (map[i][j].num == map[a][b].num &&
 					!(a == i && b == j))
 					return false;
 
@@ -92,7 +92,7 @@ bool check(int a, int b) {
 	if (a >= 3 && a < 6 && b >= 3 && b < 6)
 		for (int i = 3; i < 6; i++)
 			for (int j = 3; j < 6; j++)
-				if (solution[i][j] == solution[a][b] &&
+				if (map[i][j].num == map[a][b].num &&
 					!(a == i && b == j))
 					return false;
 
@@ -100,7 +100,7 @@ bool check(int a, int b) {
 	if (a >= 6 && a < 9 && b >= 3 && b < 6)
 		for (int i = 6; i < 9; i++)
 			for (int j = 3; j < 6; j++)
-				if (solution[i][j] == solution[a][b] &&
+				if (map[i][j].num == map[a][b].num &&
 					!(a == i && b == j))
 					return false;
 
@@ -108,7 +108,7 @@ bool check(int a, int b) {
 	if (a < 3 && b >= 6 && b < 9)
 		for (int i = 0; i < 3; i++)
 			for (int j = 6; j < 9; j++)
-				if (solution[i][j] == solution[a][b] &&
+				if (map[i][j].num == map[a][b].num &&
 					!(a == i && b == j))
 					return false;
 
@@ -116,7 +116,7 @@ bool check(int a, int b) {
 	if (a >= 3 && a < 6 && b >= 6 && b < 9)
 		for (int i = 3; i < 6; i++)
 			for (int j = 6; j < 9; j++)
-				if (solution[i][j] == solution[a][b] &&
+				if (map[i][j].num == map[a][b].num &&
 					!(a == i && b == j))
 					return false;
 
@@ -124,11 +124,22 @@ bool check(int a, int b) {
 	if (a >= 6 && a < 9 && b >= 6 && b < 9)
 		for (int i = 6; i < 9; i++)
 			for (int j = 6; j < 9; j++)
-				if (solution[i][j] == solution[a][b] &&
+				if (map[i][j].num == map[a][b].num &&
 					!(a == i && b == j))
 					return false;
 	
 
+	return true;
+}
+
+bool checkAll() {
+	for(int i=0;i<9;i++)
+		for (int j = 0; j < 9; j++) {
+			if (map[i][j].isBlack)
+				continue;
+			if (!check(i, j))
+				return false;
+		}
 	return true;
 }
 
