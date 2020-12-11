@@ -1,7 +1,7 @@
 #include"my.h"
 
 
-void drawMap();//draw the map
+void drawMap();//draw the game map
 bool keyboard();//the keyboard hit
 void mainWindow();//the mainwindow frame
 void selectDegree();
@@ -10,7 +10,7 @@ void endWindow();//the end window frame
 
 
 void main() {
-	
+	//loading images
 	{
 		loadimage(&background, _T("pic\\background.png"), 800, 600);
 		loadimage(&mWindow, _T("pic\\mwindow.png"), 800, 600);
@@ -74,7 +74,7 @@ bool keyboard()
 			if (key > '0' && key <= '9' && !map[curPo_x][curPo_y].isBlack)
 				map[curPo_x][curPo_y].num = key - 48;
 			if (key == ' ') {
-				end_time = clock_t();
+				end_time = clock();
 				endWindow();
 				return false;
 			}
@@ -84,13 +84,47 @@ bool keyboard()
 }
 
 void endWindow() {
+
 	cleardevice();
 	if (checkAll())
 		putimage(0, 0, &success);
 	else
 		putimage(0, 0, &fail);
 
-	int time = (int)(end_time - start_time) / CLOCKS_PER_SEC;
+
+	//timer
+	int time = (int)((double)(end_time - start_time) / CLOCKS_PER_SEC);
+	int length = 0;
+	int times[20];
+	//time = 22;
+	while (time != 0) {
+		times[length++] = time % 10;
+		time = time / 10;
+	}
+	int right_p = 320 + length * 40;
+	while (--length != -1) {
+		if (times[length] == 0)
+			putimage(right_p - length * 40, 400, &zero);
+		if (times[length] == 1)
+			putimage(right_p - length * 40, 400, &b1);
+		if (times[length] == 2)
+			putimage(right_p - length * 40, 400, &b2);
+		if (times[length] == 3)
+			putimage(right_p - length * 40, 400, &b3);
+		if (times[length] == 4)
+			putimage(right_p - length * 40, 400, &b4);
+		if (times[length] == 5)
+			putimage(right_p - length * 40, 400, &b5);
+		if (times[length] == 6)
+			putimage(right_p - length * 40, 400, &b6);
+		if (times[length] == 7)
+			putimage(right_p - length * 40, 400, &b7);
+		if (times[length] == 8)
+			putimage(right_p - length * 40, 400, &b8);
+		if (times[length] == 9)
+			putimage(right_p - length * 40, 400, &b9);
+	}
+	putimage(right_p + 40, 400, &s);
 
 	while (1) 
 		if (_kbhit() == 1)
@@ -148,9 +182,9 @@ void draw() {
 					putimage(220 + i * 40, 120 + j * 40, &b9);
 			}
 			else {
-				if (map[i][j].num == 0)
-					putimage(220 + i * 40, 120 + j * 40, &zero);
 				if (degree != 3) {
+					if (map[i][j].num == 0)
+						putimage(220 + i * 40, 120 + j * 40, &zero);
 					if (check(i, j)) {
 						if (map[i][j].num == 1)
 							putimage(220 + i * 40, 120 + j * 40, &g1);
@@ -192,9 +226,32 @@ void draw() {
 							putimage(220 + i * 40, 120 + j * 40, &r9);
 					}
 				}
+				if (degree == 3) {
+					if (map[i][j].num == 0)
+						putimage(220 + i * 40, 120 + j * 40, &zero);
+					if (map[i][j].num == 1)
+						putimage(220 + i * 40, 120 + j * 40, &g1);
+					if (map[i][j].num == 2)
+						putimage(220 + i * 40, 120 + j * 40, &g2);
+					if (map[i][j].num == 3)
+						putimage(220 + i * 40, 120 + j * 40, &g3);
+					if (map[i][j].num == 4)
+						putimage(220 + i * 40, 120 + j * 40, &g4);
+					if (map[i][j].num == 5)
+						putimage(220 + i * 40, 120 + j * 40, &g5);
+					if (map[i][j].num == 6)
+						putimage(220 + i * 40, 120 + j * 40, &g6);
+					if (map[i][j].num == 7)
+						putimage(220 + i * 40, 120 + j * 40, &g7);
+					if (map[i][j].num == 8)
+						putimage(220 + i * 40, 120 + j * 40, &g8);
+					if (map[i][j].num == 9)
+						putimage(220 + i * 40, 120 + j * 40, &g9);
+				}
 			}
 		}
 	}
+
 	putimage(220 + curPo_x * 40, 160 + curPo_y * 40, &pointer);
 	Sleep(50);
 
@@ -231,7 +288,7 @@ void selectDegree() {
 	makeList();
 	generate();
 	makeMap();
-	start_time = clock_t();
+	start_time = clock();
 	gameWindow();
 	
 

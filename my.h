@@ -4,7 +4,7 @@
 #include<Windows.h>
 #include<time.h>
 #include<conio.h>
-#include<graphics.h>
+#include<graphics.h>//using easyx
 
 #define MAP_WIDTH 800
 #define MAP_LENGTH 600
@@ -146,7 +146,7 @@ bool checkAll() {
 
 void generate() {
 
-	//²Î¿¼https://blog.csdn.net/silentic/article/details/78031364µÄËã·¨
+	// referrence from https://blog.csdn.net/silentic/article/details/78031364
 	solution[0][4] = solution[1][1] = solution[2][7] = solution[3][3] = solution[4][0] = solution[5][6] = solution[6][5] = solution[7][2] = solution[8][8] = list[0];
 	solution[0][5] = solution[1][2] = solution[2][8] = solution[3][4] = solution[4][1] = solution[5][7] = solution[6][3] = solution[7][0] = solution[8][6] = list[1];
 	solution[0][3] = solution[1][0] = solution[2][6] = solution[3][5] = solution[4][2] = solution[5][8] = solution[6][4] = solution[7][1] = solution[8][7] = list[2];
