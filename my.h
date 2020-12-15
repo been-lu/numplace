@@ -21,7 +21,7 @@ n map[9][9] = { 0,false };
 clock_t start_time, end_time;//time
 int degree = 1;
 int key=0;
-int uArea[50][2];//uncovered area
+int uArea[60][2];//uncovered area
 int curPo_x = 0, curPo_y = 0;
 
 IMAGE mWindow, sWindow, gWindow, success, fail, eWindow, background;//frames
@@ -39,9 +39,6 @@ void makeList() {
 		list[tmp1] = list[tmp2];
 		list[tmp2] = tmp;
 	}
-	for (int i = 0; i < 9; i++)
-		printf("%d ", list[i]);
-	printf("\n\n");
 }
 
 bool check(int a, int b) {
@@ -187,7 +184,7 @@ void generate() {
 void makeUArea() {
 	int tmp1, tmp2;
 	bool same = false;
-	for (int i =0 ; i < 50; i++) {
+	for (int i =0 ; i < 60; i++) {
 		reset:
 		tmp1 = rand() % 9;
 		tmp2 = rand() % 9;
@@ -217,7 +214,7 @@ void resetMap() {
 void makeMap() {
 	if (degree ==1) {
 		int tmpa, tmpb;
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 60; i++) {
 			tmpa = uArea[i][0];
 			tmpb = uArea[i][1];
 			map[tmpa][tmpb].num = solution[tmpa][tmpb];
@@ -228,7 +225,7 @@ void makeMap() {
 	if (degree == 2)
 	{
 		int tmpa, tmpb;
-		for (int i = 0; i < 40; i++) {
+		for (int i = 0; i < 50; i++) {
 			tmpa = uArea[i][0];
 			tmpb = uArea[i][1];
 			map[tmpa][tmpb].num = solution[tmpa][tmpb];
@@ -237,7 +234,7 @@ void makeMap() {
 	}
 	if (degree == 3) {
 		int tmpa, tmpb;
-		for (int i = 0; i < 35; i++) {
+		for (int i = 0; i < 45; i++) {
 			tmpa = uArea[i][0];
 			tmpb = uArea[i][1];
 			map[tmpa][tmpb].num = solution[tmpa][tmpb];

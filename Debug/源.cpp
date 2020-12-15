@@ -52,7 +52,7 @@ void main() {
 	
 	initgraph(800, 600);
 	mainWindow();
-	system("pause");
+	//system("pause");
 }
 
 
@@ -148,7 +148,7 @@ void endWindow() {
 	switch (choose)
 	{
 	case 49:selectDegree(); break;
-	case 50:; break;
+	case 50: break;
 	default:
 		break;
 	}
